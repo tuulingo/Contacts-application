@@ -31,7 +31,7 @@ data class Data(
     @SerializedName("followers_count")
     val followersCount: Int,
     @SerializedName("id")
-    val id: Int,
+    val personId: Int,
     @SerializedName("label")
     val label: Int,
     @SerializedName("last_activity_date")
