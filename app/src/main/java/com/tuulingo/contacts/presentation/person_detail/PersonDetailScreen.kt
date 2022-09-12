@@ -56,7 +56,7 @@ fun PersonDetailScreen(
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(text = "${person.firstName} ${person.lastName}", textAlign = TextAlign.Center, style = MaterialTheme.typography.h4)
                         Spacer(modifier = Modifier.height(5.dp))
-                        Text(text = person.orgName, textAlign = TextAlign.Center, style = MaterialTheme.typography.h5)
+                        Text(text = "Organization: ${person.orgName}", textAlign = TextAlign.Center, style = MaterialTheme.typography.h5)
                     }
                     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.Start) {
 
