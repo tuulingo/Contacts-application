@@ -2,6 +2,8 @@ package com.tuulingo.contacts.data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
+import com.tuulingo.contacts.domain.model.PersonDetailModel
+import com.tuulingo.contacts.domain.model.PersonModel
 
 data class Data(
     @SerializedName("active_flag")
@@ -95,3 +97,28 @@ data class Data(
     @SerializedName("won_deals_count")
     val wonDealsCount: Int
 )
+
+fun Data.toPersonData() : PersonModel {
+    return PersonModel(
+        id = personId,
+        firstName = firstName,
+        lastName = lastName,
+        phone = phone,
+    )
+}
+
+fun Data.toPersonDetail() : PersonDetailModel {
+    return PersonDetailModel(
+        personDetailId = personId,
+        pictureUrl =  pictureId.pictures.x512,
+        firstName = firstName,
+        lastName = lastName,
+        orgName = orgName,
+        phone = phone,
+        email = email,
+        closedDealsCount = closedDealsCount,
+        openDealsCount = openDealsCount,
+        ownerName = ownerName,
+        ownerEmail = ownerId.email
+    )
+}
