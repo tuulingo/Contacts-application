@@ -1,7 +1,7 @@
 package com.tuulingo.contacts.data.repository
 
-import Resource
 import com.tuulingo.contacts.common.Constants.API_TOKEN
+import com.tuulingo.contacts.common.Resource
 import com.tuulingo.contacts.data.remote.PipedriveApi
 import com.tuulingo.contacts.data.remote.dto.toPersonDetail
 import com.tuulingo.contacts.data.remote.dto.toPersonsData
@@ -17,7 +17,7 @@ import javax.inject.Inject
 class PersonRepositoryImpl @Inject constructor(
     private val api: PipedriveApi
 ): PersonRepository {
-    override suspend fun getPerson(): Flow<Resource<List<PersonModel>>> {
+    override suspend fun getPersons(): Flow<Resource<List<PersonModel>>> {
         return flow {
             try {
                 emit(Resource.Loading<List<PersonModel>>())
@@ -31,11 +31,11 @@ class PersonRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getPersonDetail(personId: Int): Flow<Resource<PersonDetailModel>> {
+    override suspend fun getPersonDetail(personId: String): Flow<Resource<PersonDetailModel>> {
         return flow {
             try {
                 emit(Resource.Loading<PersonDetailModel>())
-                val person = api.getPersonDetail(API_TOKEN, personId.toString()).toPersonDetail()
+                val person = api.getPersonDetail(API_TOKEN, personId).toPersonDetail()
                 emit(Resource.Success<PersonDetailModel>(person))
             } catch (e: HttpException) {
                 emit(Resource.Error<PersonDetailModel>(e.localizedMessage ?: "An unexpected error occurred"))

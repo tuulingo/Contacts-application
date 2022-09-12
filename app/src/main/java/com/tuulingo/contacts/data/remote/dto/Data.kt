@@ -101,9 +101,10 @@ data class Data(
 fun Data.toPersonsData() : PersonModel {
     return PersonModel(
         id = personId,
+        pictureUrl =  pictureId.pictures.x512,
         firstName = firstName,
         lastName = lastName,
-        phone = phone,
+        phones = phone,
     )
 }
 
@@ -114,8 +115,8 @@ fun Data.toPersonDetail() : PersonDetailModel {
         firstName = firstName,
         lastName = lastName,
         orgName = orgName,
-        phone = phone,
-        email = email,
+        phones = phone,
+        emails = email,
         closedDealsCount = closedDealsCount,
         openDealsCount = openDealsCount,
         ownerName = ownerName,

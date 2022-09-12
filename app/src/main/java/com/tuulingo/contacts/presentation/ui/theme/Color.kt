@@ -1,4 +1,4 @@
-package com.tuulingo.contacts.ui.theme
+package com.tuulingo.contacts.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
