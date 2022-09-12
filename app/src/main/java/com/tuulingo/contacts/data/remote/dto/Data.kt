@@ -98,7 +98,7 @@ data class Data(
     val wonDealsCount: Int
 )
 
-fun Data.toPersonData() : PersonModel {
+fun Data.toPersonsData() : PersonModel {
     return PersonModel(
         id = personId,
         firstName = firstName,
