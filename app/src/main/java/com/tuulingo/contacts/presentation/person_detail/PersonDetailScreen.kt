@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -29,7 +30,12 @@ fun PersonDetailScreen(
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         state.person?.let { person ->
-            LazyColumn(
+            Column(modifier = Modifier.fillMaxSize()) {
+                Text(text = "A PERSON WITH ID ${person.personId} ARRIVED", color = Color.Red, modifier = Modifier.fillMaxSize())
+
+            }
+
+            /*LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(20.dp)
             ) {
@@ -54,7 +60,8 @@ fun PersonDetailScreen(
                                 .fillMaxSize(0.2f),
                         )
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(text = "${person.firstName} ${person.lastName}", textAlign = TextAlign.Center, style = MaterialTheme.typography.h4)
+                        Text(text = "A PERSON WITH ID ${person.personId} ARRIVED", color = Color.Red, modifier = Modifier.fillMaxSize())
+                        Text(text = "${person.firstName} ${person.lastName}", color = Color.Blue, textAlign = TextAlign.Center, style = MaterialTheme.typography.h4)
                         Spacer(modifier = Modifier.height(5.dp))
                         Text(text = "Organization: ${person.orgName}", textAlign = TextAlign.Center, style = MaterialTheme.typography.h5)
                     }
@@ -107,7 +114,7 @@ fun PersonDetailScreen(
 
 
                 }
-            }
+            }*/
         }
     }
 }

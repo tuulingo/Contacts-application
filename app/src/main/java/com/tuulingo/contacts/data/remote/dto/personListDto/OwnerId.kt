@@ -1,4 +1,4 @@
-package com.tuulingo.contacts.data.remote.dto
+package com.tuulingo.contacts.data.remote.dto.personListDto
 
 
 import com.google.gson.annotations.SerializedName

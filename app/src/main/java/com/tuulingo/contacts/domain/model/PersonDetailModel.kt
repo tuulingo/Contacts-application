@@ -1,10 +1,11 @@
 package com.tuulingo.contacts.domain.model
 
-import com.tuulingo.contacts.data.remote.dto.Email
-import com.tuulingo.contacts.data.remote.dto.Phone
+import com.tuulingo.contacts.data.remote.dto.personDetailDto.Email
+import com.tuulingo.contacts.data.remote.dto.personDetailDto.Phone
+
 
 data class PersonDetailModel(
-    val personDetailId: Int,
+    val personId: String,
     val pictureUrl: String?,
     val firstName: String,
     val lastName: String,

@@ -1,13 +1,13 @@
-package com.tuulingo.contacts.data.remote.dto
+package com.tuulingo.contacts.data.remote.dto.personDetailDto
 
 
 import com.google.gson.annotations.SerializedName
 
-data class FirstResponse(
+data class PersonDetailResponse(
     @SerializedName("additional_data")
     val additionalData: AdditionalData,
     @SerializedName("data")
-    val data: List<Data>,
+    val data: Data,
     @SerializedName("related_objects")
     val relatedObjects: RelatedObjects,
     @SerializedName("success")

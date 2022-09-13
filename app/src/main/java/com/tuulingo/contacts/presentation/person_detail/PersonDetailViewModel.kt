@@ -1,5 +1,6 @@
 package com.tuulingo.contacts.presentation.person_detail
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -8,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.tuulingo.contacts.common.Constants
 import com.tuulingo.contacts.common.Resource
 import com.tuulingo.contacts.data.repository.PersonRepositoryImpl
+import com.tuulingo.contacts.presentation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -27,6 +29,7 @@ class PersonDetailViewModel @Inject constructor(
         savedStateHandle.get<String>(Constants.PARAM_PERSON_ID)?.let { personId ->
             viewModelScope.launch {
                 getPerson(personId)
+                Log.d("viewmodel INIT", getPerson(personId).toString())
             }
         }
     }
@@ -35,6 +38,7 @@ class PersonDetailViewModel @Inject constructor(
         repositoryImpl.getPersonDetail(personId).onEach { result ->
             when (result) {
                 is Resource.Success -> {
+                    Log.d("viewmodel SAA ISIK", personId)
                     _state.value = PersonDetailState(person = result.data)
                 }
                 is Resource.Error -> {

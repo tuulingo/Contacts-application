@@ -1,7 +1,7 @@
 package com.tuulingo.contacts.data.remote
 
-import com.tuulingo.contacts.data.remote.dto.Data
-import com.tuulingo.contacts.data.remote.dto.FirstResponse
+import com.tuulingo.contacts.data.remote.dto.personDetailDto.PersonDetailResponse
+import com.tuulingo.contacts.data.remote.dto.personListDto.FirstResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -17,6 +17,6 @@ interface PipedriveApi {
     suspend fun getPersonDetail(
         @Path("id") personId: String,
         @Query("api_token") api_token: String
-    ): Data
+    ): PersonDetailResponse
 
 }

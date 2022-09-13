@@ -1,8 +1,7 @@
-package com.tuulingo.contacts.data.remote.dto
+package com.tuulingo.contacts.data.remote.dto.personListDto
 
 
 import com.google.gson.annotations.SerializedName
-import com.tuulingo.contacts.domain.model.PersonDetailModel
 import com.tuulingo.contacts.domain.model.PersonModel
 
 data class Data(
@@ -100,26 +99,10 @@ data class Data(
 
 fun Data.toPersonsData() : PersonModel {
     return PersonModel(
-        id = personId,
+        id = personId.toString(),
         pictureUrl =  pictureId.pictures.x512,
         firstName = firstName,
         lastName = lastName,
         phones = phone,
-    )
-}
-
-fun Data.toPersonDetail() : PersonDetailModel {
-    return PersonDetailModel(
-        personDetailId = personId,
-        pictureUrl =  pictureId.pictures.x512,
-        firstName = firstName,
-        lastName = lastName,
-        orgName = orgName,
-        phones = phone,
-        emails = email,
-        closedDealsCount = closedDealsCount,
-        openDealsCount = openDealsCount,
-        ownerName = ownerName,
-        ownerEmail = ownerId.email
     )
 }

@@ -4,9 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -30,8 +32,9 @@ fun PersonListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick(person) }
-            .padding(20.dp),
-        horizontalArrangement = Arrangement.Start
+            .padding(8.dp, 16.dp, 0.dp, 8.dp),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         if (person.pictureUrl == "") {
             Image(
@@ -54,23 +57,22 @@ fun PersonListItem(
                     .size(60.dp)
             )
         }
-        
-        Box(
+
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(8.dp)
         ) {
             Text(
                 text = "${person.firstName} ${person.lastName}",
-                style = MaterialTheme.typography.h5,
+                style = MaterialTheme.typography.subtitle1,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(0.dp, 16.dp)
+                    .fillMaxWidth().padding(2.dp)
             )
             person.phones.forEach { phone ->
                 if (phone.label == "work") {
                     Text(
-                        text = "${phone.label}: ${phone.value}",
+                        text = "Work phone: ${phone.value}",
                         style = MaterialTheme.typography.body2,
                         color = Color.Gray,
                         textAlign = TextAlign.End
