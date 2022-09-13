@@ -1,5 +1,6 @@
 package com.tuulingo.contacts.presentation.person_detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -30,11 +31,6 @@ fun PersonDetailScreen(
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         state.person?.let { person ->
-            Column(modifier = Modifier.fillMaxSize()) {
-                Text(text = "A PERSON WITH ID ${person.personId} ARRIVED", color = Color.Red, modifier = Modifier.fillMaxSize())
-
-            }
-
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(20.dp)
@@ -47,70 +43,136 @@ fun PersonDetailScreen(
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        AsyncImage(
-                            model = ImageRequest.Builder(LocalContext.current)
-                                .data(person.pictureUrl)
-                                .crossfade(true)
-                                .build(),
-                            placeholder = painterResource(R.drawable.person_placeholder),
-                            contentDescription = stringResource(R.string.contact_picture),
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .clip(CircleShape)
-                                .fillMaxSize(0.2f),
-                        )
+                        if (person.pictureUrl == "") {
+                            Image(
+                                painterResource(R.drawable.person_placeholder),
+                                contentDescription = "",
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .clip(CircleShape)
+                                    .size(120.dp)
+                            )
+                        } else {
+                            AsyncImage(
+                                model = ImageRequest.Builder(LocalContext.current)
+                                    .data(person.pictureUrl)
+                                    .crossfade(true)
+                                    .build(),
+                                placeholder = painterResource(R.drawable.person_placeholder),
+                                contentDescription = stringResource(R.string.contact_picture),
+                                contentScale = ContentScale.Crop,
+                                modifier = Modifier
+                                    .clip(CircleShape)
+                                    .size(120.dp)
+                            )
+                        }
                         Spacer(modifier = Modifier.height(10.dp))
-                        Text(text = "A PERSON WITH ID ${person.personId} ARRIVED", color = Color.Red, modifier = Modifier.fillMaxSize())
-                        Text(text = "${person.firstName} ${person.lastName}", color = Color.Blue, textAlign = TextAlign.Center, style = MaterialTheme.typography.h4)
+                        Text(
+                            text = "${person.firstName} ${person.lastName}",
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.h4
+                        )
                         Spacer(modifier = Modifier.height(5.dp))
-                        Text(text = "Organization: ${person.orgName}", textAlign = TextAlign.Center, style = MaterialTheme.typography.h5)
+                        Text(
+                            text = "Organization: ${person.orgName}",
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.body2,
+                            color = Color.Gray,
+                        )
+                        Spacer(modifier = Modifier.height(20.dp))
+                        Divider(Modifier.fillMaxWidth())
                     }
-                    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.Start) {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.Start
+                    ) {
 
                     }
-                    Spacer(modifier = Modifier.height(25.dp))
+                    Spacer(modifier = Modifier.height(15.dp))
                     Text(
-                        text = "Phone",
-                        style = MaterialTheme.typography.h3
+                        text = "Phone(s)",
+                        style = MaterialTheme.typography.h5,
                     )
-                    FlowColumn(mainAxisSpacing = 15.dp,
-                        crossAxisSpacing = 10.dp,
-                        modifier = Modifier.fillMaxWidth()
+
+                    FlowColumn(
+                        mainAxisSpacing = 5.dp,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(0.dp, 8.dp, 0.dp, 4.dp),
                     ) {
                         person.phones.forEach { phone ->
-                            Text(text = "${phone.label}: ${phone.value}", style = MaterialTheme.typography.h4)
-                            Divider()
+                            Text(
+                                text = "${phone.label.replaceFirstChar { it.uppercase() }} phone: ${phone.value}",
+                                style = MaterialTheme.typography.body2,
+                                color = Color.Gray,
+                            )
                         }
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
-                        text = "Email",
-                        style = MaterialTheme.typography.h3
+                        text = "Email(s)",
+                        style = MaterialTheme.typography.h5,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(0.dp, 8.dp, 0.dp, 4.dp)
                     )
-                    FlowColumn(mainAxisSpacing = 15.dp,
-                        crossAxisSpacing = 10.dp,
+
+                    FlowColumn(
+                        mainAxisSpacing = 5.dp,
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         person.emails.forEach { email ->
-                            Text(text = "${email.label}: ${email.value}", style = MaterialTheme.typography.h4)
-                            Divider()
+                            Text(
+                                text = "${email.label.replaceFirstChar { it.uppercase() }} email: ${email.value}",
+                                style = MaterialTheme.typography.body2,
+                                color = Color.Gray,
+
+                                )
                         }
                     }
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         text = "Deals",
-                        style = MaterialTheme.typography.h3
+                        style = MaterialTheme.typography.h5
                     )
-                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text(text = "Open deals: ${person.openDealsCount}")
-                        Text(text = "Closed deals: ${person.closedDealsCount}")
+                    Spacer(modifier = Modifier.height(8.dp))
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Start,
+                    ) {
+                        Text(
+                            text = "Open deals: ${person.openDealsCount}",
+                            style = MaterialTheme.typography.body2,
+                            color = Color.Gray,
+
+                            )
+                        Text(
+                            text = "Closed deals: ${person.closedDealsCount}",
+                            style = MaterialTheme.typography.body2,
+                            color = Color.Gray,
+                            modifier = Modifier.padding(8.dp, 0.dp)
+                        )
 
                     }
+                    Spacer(modifier = Modifier.height(16.dp))
+
                     Text(
                         text = "Owner",
-                        style = MaterialTheme.typography.h3
+                        style = MaterialTheme.typography.h5
                     )
-                    Text(text = person.ownerName)
-                    Text(text = person.ownerEmail)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Name: ${person.ownerName}", style = MaterialTheme.typography.body2,
+                        color = Color.Gray,
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "Email: ${person.ownerEmail}",
+                        style = MaterialTheme.typography.body2,
+                        color = Color.Gray,
+                    )
 
 
                 }
