@@ -5,7 +5,7 @@ import com.tuulingo.contacts.data.remote.dto.Phone
 
 data class PersonDetailModel(
     val personDetailId: Int,
-    val pictureUrl: String,
+    val pictureUrl: String?,
     val firstName: String,
     val lastName: String,
     val orgName: String,

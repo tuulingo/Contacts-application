@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +27,8 @@ fun PersonListScreen(
 ) {
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
+        Text(text = "Contacts", style = MaterialTheme.typography.h4, textAlign = TextAlign.Center)
+        Divider()
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.persons) { person ->
                 PersonListItem(person = person, onItemClick = {
