@@ -29,7 +29,6 @@ class PersonDetailViewModel @Inject constructor(
         savedStateHandle.get<String>(Constants.PARAM_PERSON_ID)?.let { personId ->
             viewModelScope.launch {
                 getPerson(personId)
-                Log.d("viewmodel INIT", getPerson(personId).toString())
             }
         }
     }
@@ -38,7 +37,6 @@ class PersonDetailViewModel @Inject constructor(
         repositoryImpl.getPersonDetail(personId).onEach { result ->
             when (result) {
                 is Resource.Success -> {
-                    Log.d("viewmodel SAA ISIK", personId)
                     _state.value = PersonDetailState(person = result.data)
                 }
                 is Resource.Error -> {

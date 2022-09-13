@@ -35,7 +35,6 @@ fun PersonListScreen(
 
             items(state.persons) { person ->
                 PersonListItem(person = person, onItemClick = {
-                    Log.d("KUHU NAVIGATEB", Screen.PersonDetailScreen.route + "/${person.id}")
                     navController.navigate(Screen.PersonDetailScreen.route + "/${person.id}")
                 })
             }

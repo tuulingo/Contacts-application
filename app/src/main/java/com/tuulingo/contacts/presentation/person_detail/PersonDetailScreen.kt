@@ -35,7 +35,7 @@ fun PersonDetailScreen(
 
             }
 
-            /*LazyColumn(
+            LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(20.dp)
             ) {
@@ -114,7 +114,7 @@ fun PersonDetailScreen(
 
 
                 }
-            }*/
+            }
         }
     }
 }
