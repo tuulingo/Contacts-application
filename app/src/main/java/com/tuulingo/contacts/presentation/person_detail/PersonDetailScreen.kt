@@ -1,6 +1,7 @@
 package com.tuulingo.contacts.presentation.person_detail
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -74,7 +75,7 @@ fun PersonDetailScreen(
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         Text(
-                            text = "Organization: ${person.orgName}",
+                            text = person.orgName,
                             textAlign = TextAlign.Center,
                             style = MaterialTheme.typography.body2,
                             color = Color.Gray,
@@ -82,61 +83,76 @@ fun PersonDetailScreen(
                         Spacer(modifier = Modifier.height(20.dp))
                         Divider(Modifier.fillMaxWidth())
                     }
-                    Column(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.Start
-                    ) {
-
-                    }
-                    Spacer(modifier = Modifier.height(15.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
                     Text(
-                        text = "Phone(s)",
-                        style = MaterialTheme.typography.h5,
+                        text = "PHONE(S)",
+                        style = MaterialTheme.typography.h6,
+                        color = Color.Gray
                     )
-
+                    Spacer(modifier = Modifier.height(5.dp))
                     FlowColumn(
-                        mainAxisSpacing = 5.dp,
+                        mainAxisSpacing = 10.dp,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(0.dp, 8.dp, 0.dp, 4.dp),
-                    ) {
+
+                        ) {
                         person.phones.forEach { phone ->
-                            Text(
-                                text = "${phone.label.replaceFirstChar { it.uppercase() }} phone: ${phone.value}",
-                                style = MaterialTheme.typography.body2,
-                                color = Color.Gray,
-                            )
+                            Row(
+                                modifier = Modifier.fillParentMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "${phone.value}",
+                                    style = MaterialTheme.typography.body2,
+                                )
+                                Text(
+                                    text = "${phone.label.replaceFirstChar { it.uppercase() }}",
+                                    style = MaterialTheme.typography.body2,
+                                )
+                            }
                         }
                     }
-                    Spacer(modifier = Modifier.height(15.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Divider(Modifier.fillMaxWidth())
+                    Spacer(modifier = Modifier.height(5.dp))
                     Text(
-                        text = "Email(s)",
-                        style = MaterialTheme.typography.h5,
+                        text = "EMAIL(S)",
+                        style = MaterialTheme.typography.h6,
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(0.dp, 8.dp, 0.dp, 4.dp)
+                            .fillMaxWidth(),
+                        color = Color.Gray
                     )
-
+                    Spacer(modifier = Modifier.height(5.dp))
                     FlowColumn(
-                        mainAxisSpacing = 5.dp,
-                        modifier = Modifier.fillMaxWidth()
+                        mainAxisSpacing = 10.dp,
+                        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
                     ) {
                         person.emails.forEach { email ->
-                            Text(
-                                text = "${email.label.replaceFirstChar { it.uppercase() }} email: ${email.value}",
-                                style = MaterialTheme.typography.body2,
-                                color = Color.Gray,
-
+                            Row(
+                                modifier = Modifier.fillParentMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "${email.value}",
+                                    style = MaterialTheme.typography.body2,
                                 )
+                                Text(
+                                    text = "${email.label.replaceFirstChar { it.uppercase() }}",
+                                    style = MaterialTheme.typography.body2,
+                                )
+                            }
                         }
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Divider(Modifier.fillMaxWidth())
+                    Spacer(modifier = Modifier.height(5.dp))
                     Text(
-                        text = "Deals",
-                        style = MaterialTheme.typography.h5
+                        text = "DEALS",
+                        style = MaterialTheme.typography.h6,
+                        color = Color.Gray
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
-
+                    Spacer(modifier = Modifier.height(10.dp))
                     Row(
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -145,36 +161,52 @@ fun PersonDetailScreen(
                         Text(
                             text = "Open deals: ${person.openDealsCount}",
                             style = MaterialTheme.typography.body2,
-                            color = Color.Gray,
 
                             )
                         Text(
                             text = "Closed deals: ${person.closedDealsCount}",
                             style = MaterialTheme.typography.body2,
-                            color = Color.Gray,
-                            modifier = Modifier.padding(8.dp, 0.dp)
+                            modifier = Modifier.padding(16.dp, 0.dp)
                         )
 
                     }
-                    Spacer(modifier = Modifier.height(16.dp))
-
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Divider(Modifier.fillMaxWidth())
+                    Spacer(modifier = Modifier.height(5.dp))
                     Text(
-                        text = "Owner",
-                        style = MaterialTheme.typography.h5
+                        text = "OWNER",
+                        style = MaterialTheme.typography.h6,
+                        color = Color.Gray
                     )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "Name: ${person.ownerName}", style = MaterialTheme.typography.body2,
-                        color = Color.Gray,
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "Email: ${person.ownerEmail}",
-                        style = MaterialTheme.typography.body2,
-                        color = Color.Gray,
-                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = person.ownerName,
+                            style = MaterialTheme.typography.body2,
+                        )
+                        Text(
+                            text = "Name",
+                            style = MaterialTheme.typography.body2,
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "${person.ownerEmail}",
+                            style = MaterialTheme.typography.body2,
+                        )
+                        Text(
+                            text = "Email",
+                            style = MaterialTheme.typography.body2,
 
-
+                        )
+                    }
                 }
             }
         }
