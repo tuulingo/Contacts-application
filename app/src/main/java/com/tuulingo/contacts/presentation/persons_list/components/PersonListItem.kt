@@ -26,13 +26,14 @@ import com.tuulingo.contacts.domain.model.PersonModel
 @Composable
 fun PersonListItem(
     person: PersonModel,
-    onItemClick: (PersonModel) -> Unit
+    onItemClick: (PersonModel) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick(person) }
-            .padding(8.dp, 16.dp, 0.dp, 8.dp),
+            .padding(15.dp, 16.dp, 0.dp, 16.dp),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
