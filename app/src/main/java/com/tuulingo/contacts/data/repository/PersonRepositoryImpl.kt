@@ -22,7 +22,7 @@ class PersonRepositoryImpl @Inject constructor(
         return flow {
             try {
                 emit(Resource.Loading<List<PersonModel>>())
-                val persons = api.getPersons(API_TOKEN).data.map { it.toPersonsData() }
+                val persons = api.getPersons(API_TOKEN).data.map { it.toPersonsData() }.sortedBy { it.firstName }
                 emit(Resource.Success<List<PersonModel>>(persons))
             } catch (e: HttpException) {
                 emit(Resource.Error<List<PersonModel>>(e.localizedMessage ?: "An unexpected error occurred"))

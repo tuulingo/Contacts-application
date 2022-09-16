@@ -1,5 +1,6 @@
 package com.tuulingo.contacts.presentation.persons_list
 
+import android.graphics.fonts.FontStyle
 import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,7 +11,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterStart
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -24,11 +27,11 @@ fun PersonListScreen(
     viewModel: PersonListViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.Start, verticalArrangement = Arrangement.Center) {
         Column(modifier = Modifier.fillMaxWidth()) {
-            Text(text = "Contacts", style = MaterialTheme.typography.h4, textAlign = TextAlign.Center, modifier = Modifier
+            Text(text = "Pipedrive Contacts", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.subtitle1,  textAlign = TextAlign.Start, modifier = Modifier
                 .fillMaxWidth()
-                .padding(20.dp))
+                .padding(20.dp,20.dp,0.dp,10.dp))
             Divider()
         }
         LazyColumn(modifier = Modifier.fillMaxSize().padding(10.dp)) {
@@ -39,7 +42,7 @@ fun PersonListScreen(
                 })
             }
         }
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.CenterStart) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = CenterStart) {
             if(state.error.isNotBlank()) {
                 Text(
                     text = state.error,
