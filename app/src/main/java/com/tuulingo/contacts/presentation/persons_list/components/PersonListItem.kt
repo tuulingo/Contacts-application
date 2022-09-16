@@ -36,12 +36,14 @@ fun PersonListItem(
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (person.pictureUrl == "") {
+        if (person.pictureUrl == "" || person.pictureUrl == null) {
             Image(
                 painterResource(R.drawable.person_placeholder),
-                contentDescription = "",
+                contentDescription = stringResource(R.string.contact_picture),
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxHeight()
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .size(60.dp)
             )
         } else {
             AsyncImage(

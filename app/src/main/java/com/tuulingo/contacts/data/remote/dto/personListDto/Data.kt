@@ -100,7 +100,7 @@ data class Data(
 fun Data.toPersonsData() : PersonModel {
     return PersonModel(
         id = personId.toString(),
-        pictureUrl =  pictureId.pictures.x512,
+        pictureUrl =  pictureId?.let { it.pictures.x512  },
         firstName = firstName,
         lastName = lastName,
         phones = phone,
