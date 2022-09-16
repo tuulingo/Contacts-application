@@ -1,10 +1,11 @@
 ## Contacts application
 Using pipedrive api to create a simple contacts and detailed contact screen.
  
-## Screenshots (Old)
+## Screenshots
 
-<a href="url"><img src="https://user-images.githubusercontent.com/49025519/190143467-a5a8d78c-2f1d-4c05-a747-b3143a7533f2.png" height="475" width="225" ></a>
-<a href="url"><img src="https://user-images.githubusercontent.com/49025519/190143545-c0cb96c4-8fa5-4b82-b059-850bc6f74645.png" height="475" width="225" ></a>
+<a href="url"><img src="https://user-images.githubusercontent.com/49025519/190667357-ed74ce9d-f3d7-41c5-834a-74fb8e3940ec.png" height="475" width="225" ></a>
+<a href="url"><img src="https://user-images.githubusercontent.com/49025519/190667427-647104bb-8f1e-4222-b408-cc8d3bbd0ce9.png" height="475" width="225" ></a>
+<a href="url"><img src="https://user-images.githubusercontent.com/49025519/190667476-855212cd-6cfc-47d1-92b8-c7aa058359a1.png" height="475" width="225" ></a>
 
 ## Tech/framework used
 
