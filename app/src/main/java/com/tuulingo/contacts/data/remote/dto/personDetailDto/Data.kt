@@ -98,7 +98,7 @@ data class Data(
 fun Data.toPersonDetail() : PersonDetailModel {
     return PersonDetailModel(
         personId = personId.toString(),
-        pictureUrl =  pictureId.pictures.x512,
+        pictureUrl =   pictureId?.let { it.pictures.x512  },
         firstName = firstName,
         lastName = lastName,
         orgName = orgName,

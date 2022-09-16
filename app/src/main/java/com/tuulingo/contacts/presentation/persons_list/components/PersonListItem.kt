@@ -33,7 +33,7 @@ fun PersonListItem(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onItemClick(person) }
-            .padding(15.dp, 16.dp, 0.dp, 16.dp),
+            .padding(15.dp, 10.dp, 0.dp, 10.dp),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {

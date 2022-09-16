@@ -60,14 +60,14 @@ fun PersonListScreen(
                         color = Color.Blue.copy(alpha = 0.6f, red = 0.6f,  green = 0.6f, blue = 0.6f),
                         modifier = Modifier
                             .background(
-                                Color.LightGray.copy(red = 0.05f, green = 0.05f, blue = 0.05f)
+                                Color.LightGray.copy(red = 0.15f, green = 0.15f, blue = 0.15f)
                             )
                             .padding(15.dp, 7.dp, 0.dp, 7.dp)
                             .fillParentMaxWidth(1.5f)
                     )
                 }
                 items(persons) { person ->
-                    PersonListItem(person = person, modifier = Modifier.padding(10.dp), onItemClick = {
+                    PersonListItem(person = person, onItemClick = {
                         navController.navigate(Screen.PersonDetailScreen.route + "/${person.id}")
                     })
                 }

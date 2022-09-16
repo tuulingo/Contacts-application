@@ -44,7 +44,7 @@ fun PersonDetailScreen(
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        if (person.pictureUrl == "") {
+                        if (person.pictureUrl == "" || person.pictureUrl == null) {
                             Image(
                                 painterResource(R.drawable.person_placeholder),
                                 contentDescription = "",
